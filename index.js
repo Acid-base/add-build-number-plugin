@@ -13,10 +13,10 @@ class AddBuildNumberPlugin {
         let files = Object.keys(assets).filter(name => new RegExp(this.options.test).test(name));
         this.options.output = this.options.output.replace('[build-number]', process.env[this.options.var]);
 
-        this.rename(files);
+        this.rename(assets, files);
     }
 
-    rename() {
+    rename(assets, files) {
         files.forEach(name => {
             assets[name.replace(this.options.test, this.options.output)] = assets[name];
             delete assets[name];
