@@ -1,6 +1,6 @@
 {
   "name": "add-build-number-plugin",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Set the build number on file",
   "main": "index.js",
   "scripts": {
