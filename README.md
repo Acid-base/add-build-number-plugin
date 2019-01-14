@@ -22,7 +22,8 @@ module.exports = {
     plugins: [
         new AddBuildNumberPlugin({
             test: /(.*)\.(js|css|gz)/,
-            output: `$1.[build-number].$2`,
+            needHash: /^prefix/,
+            output: `$1.[hash].[build-number].$2`,
             var: 'BUILD_NUMBER'
         })
     ]
