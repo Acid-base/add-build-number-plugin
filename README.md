@@ -1,5 +1,3 @@
-# NOT READY!
-
 # Add Build Number Plugin
 
 Webpack plugin for add build number to files.
