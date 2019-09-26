@@ -9,9 +9,11 @@ class AddBuildNumberPlugin {
     }
 
     handle(compilation) {
-        let { assets } = compilation;
-        let files = Object.keys(assets).filter(name => new RegExp(this.options.test).test(name));
-        this.options.output = this.options.output.replace('[build-number]', compilation[this.options.var]);
+        const { assets } = compilation;
+        const { buildNumber } = this.options;
+        const files = Object.keys(assets).filter(name => new RegExp(this.options.test).test(name));
+
+        this.options.output = this.options.output.replace('[build-number]', buildNumber || compilation[this.options.var]);
 
         this.rename(assets, files, compilation.hash);
     }
@@ -26,7 +28,7 @@ class AddBuildNumberPlugin {
                 output = this.options.output.replace('.[hash]', '');
             }
 
-            let newKey = name.replace(this.options.test, output);
+            const newKey = name.replace(this.options.test, output);
             assets[newKey] = assets[name];
             delete assets[name];
         });

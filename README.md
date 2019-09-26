@@ -22,7 +22,19 @@ module.exports = {
             test: /(.*)\.(js|css|gz)/,
             needHash: /^prefix/,
             output: `$1.[hash].[build-number].$2`,
-            var: 'BUILD_NUMBER'
+            buildNumber: process.env.BUILD_NUMBER
+        })
+    ]
+};
+
+module.exports = {
+    // ...
+    plugins: [
+        new AddBuildNumberPlugin({
+            test: /(.*)\.(js|css|gz)/,
+            needHash: /^prefix/,
+            output: `$1.[hash].[build-number].$2`,
+            var: 'BUILD_NUMBER' // key from compilation
         })
     ]
 };
